@@ -1,0 +1,49 @@
+TODO:
+- write adequate tests
+
+-------------- PLAN --------------
+DONE  1) finish implementing
+DONE     - find a way to add bias term to weight matrix!!!
+DONE     - WeightMatrix
+DONE         update()
+DONE     - NeuralNetwork
+DONE         backpropagate()
+DONE         train()
+DONE         plot the error with time
+           (implement mini-batches)
+DONE         find a way to save the parameters
+DONE         test()
+DONE         add iteration state
+DONE         - add asserts inside implementation for correctness
+DONE  2) test with MNIST data set
+  3) write adequate tests
+  4) replace multi_array with vectors and matrices
+  5) replace all instances of std::vector with boost::vector
+  6) write documentation!
+----------------------------------
+
+inheritance with layer.h and node.h is kind of sketchy
+- maybe figure out how to make this inheritance work properly
+- problem is with the node_list field (inheriting Node)
+
+do some optimizations with dot products
+- possibly replace std::vector with boost::array?
+------------------------------------------------------------
+
+main.cpp is used for testing
+
+Node (abstract class)
+  implementations:
+  - InputNode
+  - HiddenNode
+  - OutputNode
+
+Layer (abstract class)
+  implementations:
+  - InputLayer
+  - HiddenLayer
+  - OutputLayer
+
+WeightMatrix (concrete class)
+
+NeuralNetwork (concrete class)
