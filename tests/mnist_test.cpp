@@ -3,11 +3,10 @@
 #include "neural_network.h"
 #include "data_reader.h"
 
-void TrainMNIST() {
-  std::string input_filepath =
-      "/home/echentw/Documents/neural_network/mnist/txt_data/train_images.txt";
-  std::string label_filepath =
-      "/home/echentw/Documents/neural_network/mnist/txt_data/train_labels.txt";
+void TrainMNIST(std::string rootpath) {
+  std::string input_filepath = rootpath + "train_images.txt";
+  std::string label_filepath = rootpath + "train_labels.txt";
+
   int dim = 28 * 28;
 
   DataReader reader(input_filepath, label_filepath);
@@ -29,9 +28,9 @@ void TrainMNIST() {
   }
 
   NeuralNetwork network(num_outputs);
-//  network.addInputLayer(dim);
-//  network.addHiddenLayer(30);
-//  network.addOutputLayer();
+  network.addInputLayer(dim);
+  network.addHiddenLayer(30);
+  network.addOutputLayer();
 
   std::cout << "Loading network..." << std::endl;
   network.load("mnist_config4.txt");
@@ -43,11 +42,10 @@ void TrainMNIST() {
   network.train(input_data, labels, 1, "mnist_config5.txt");
 }
 
-void SeeTrainingAccuracy() {
-  std::string input_filepath =
-      "/home/echentw/Documents/neural_network/mnist/txt_data/train_images.txt";
-  std::string label_filepath =
-      "/home/echentw/Documents/neural_network/mnist/txt_data/train_labels.txt";
+void SeeTrainingAccuracy(std::string rootpath) {
+  std::string input_filepath = rootpath + "train_images.txt";
+  std::string label_filepath = rootpath + "train_labels.txt";
+
   int dim = 28 * 28;
 
   DataReader reader(input_filepath, label_filepath);
@@ -77,11 +75,10 @@ void SeeTrainingAccuracy() {
 
 }
 
-void TestMNIST() {
-  std::string input_filepath =
-      "/home/echentw/Documents/neural_network/mnist/txt_data/test_images.txt";
-  std::string label_filepath =
-      "/home/echentw/Documents/neural_network/mnist/txt_data/test_labels.txt";
+void TestMNIST(std::string rootpath) {
+  std::string input_filepath = rootpath + "test_images.txt";
+  std::string label_filepath = rootpath + "test_labels.txt";
+
   int dim = 28 * 28;
 
   DataReader reader(input_filepath, label_filepath);
@@ -110,8 +107,11 @@ void TestMNIST() {
 }
 
 int main() {
-  TrainMNIST();
-//  SeeTrainingAccuracy();
-//  TestMNIST();
+  std::string rootpath =
+      "/home/echentw/Documents/projects/github/neural-network/mnist/txt_data/";
+  TrainMNIST(rootpath);
+  // SeeTrainingAccuracy(rootpath);
+  // TestMNIST(rootpath);
+  return 0;
 }
 

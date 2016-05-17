@@ -5,9 +5,7 @@
 
 using namespace std;
 
-void TestConvertInputData() {
-  string filepath =
-      "/home/echentw/Documents/neural_network/mnist/txt_data/test_images.txt";
+void TestConvertInputData(std::string filepath) {
   DataReader reader(filepath);
   int dim = 784;
   std::vector<std::vector<double> > input_data = reader.convertInputData(dim);
@@ -76,9 +74,7 @@ void TestConvertInputData() {
   printPass("TestConvertInputData()");
 }
 
-void TestConvertLabels() {
-  std::string filepath =
-      "/home/echentw/Documents/neural_network/mnist/txt_data/test_labels.txt";
+void TestConvertLabels(std::string filepath) {
   DataReader reader("", filepath);
   std::vector<int> labels = reader.convertLabels();
 
@@ -97,7 +93,9 @@ void TestConvertLabels() {
 }
 
 int main() {
-  TestConvertInputData();
-  TestConvertLabels();
-
+  std::string rootpath =
+      "/home/echentw/Documents/projects/github/neural-network/mnist/txt_data/";
+  TestConvertInputData(rootpath + "test_images.txt");
+  TestConvertLabels(rootpath + "test_labels.txt");
+  return 0;
 }
