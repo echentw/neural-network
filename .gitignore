@@ -1,1 +1,6 @@
 *config*
+*.swp
+image_maker/
+raw_data/
+txt_data/
+build/
